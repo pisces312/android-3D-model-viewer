@@ -463,7 +463,7 @@ class MainActivity : AppCompatActivity(), EventListener, ContentUtils.ContentRes
 
     private fun checkNotification() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        val notified = prefs.getBoolean("notification.v5.1", true)
+        val notified = prefs.getBoolean("notification.v50.upgrade", false)
         if (!notified) {
             // TODO: Update this with your NEW package name
             val newPackageName = "org.the3deer.android.viewer" 
@@ -474,7 +474,7 @@ class MainActivity : AppCompatActivity(), EventListener, ContentUtils.ContentRes
                 .setMessage(getString(R.string.dialog_new_version_message, newAppName))
                 .setPositiveButton(R.string.dialog_new_version_button) { _, _ ->
                     // Optional: Mark as notified so it doesn't show again
-                    prefs.edit().putBoolean("notification.v5.1", true).apply()
+                    prefs.edit().putBoolean("notification.v50.upgrade", true).apply()
                     try {
                         startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=$newPackageName".toUri()))
                     } catch (e: Exception) {
