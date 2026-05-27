@@ -19,10 +19,10 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file("android-model-viewer.jks")
-            storePassword = System.getenv("RELEASE_STORE_PASSWORD")
-            keyAlias = "android-model-viewer"
-            keyPassword = System.getenv("RELEASE_KEY_PASSWORD")
+            storeFile = file(System.getenv("KEY_STORE") ?: "android-model-viewer.jks")
+            storePassword = System.getenv("KEY_STORE_PASSWORD")
+            keyAlias = System.getenv("KEY_ALIAS") ?: "android-model-viewer"
+            keyPassword = System.getenv("KEY_PASSWORD")
         }
     }
 
